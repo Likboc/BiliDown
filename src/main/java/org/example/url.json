@@ -1,0 +1,60 @@
+{
+  "code": 0,
+  "message": "0",
+  "ttl": 1,
+  "data": {
+    "from": "local",
+    "result": "suee",
+    "message": "",
+    "quality": 16,
+    "format": "mp4",
+    "timelength": 253098,
+    "accept_format": "mp4720,mp4",
+    "accept_description": [
+      "高清 720P",
+      "流畅 360P"
+    ],
+    "accept_quality": [
+      64,
+      16
+    ],
+    "video_codecid": 7,
+    "seek_param": "start",
+    "seek_type": "second",
+    "durl": [
+      {
+        "order": 1,
+        "length": 253098,
+        "size": 13460678,
+        "ahead": "",
+        "vhead": "",
+        "url": "https://xy111x161x118x62xy.mcdn.bilivideo.cn:4483/upgcxcode/08/11/1376711108/1376711108-1-16.mp4?e=ig8euxZM2rNcNbRVhwdVhwdlhWdVhwdVhoNvNC8BqJIzNbfqXBvEqxTEto8BTrNvN0GvT90W5JZMkX_YN0MvXg8gNEV4NC8xNEV4N03eN0B5tZlqNxTEto8BTrNvNeZVuJ10Kj_g2UB02J0mN0B5tZlqNCNEto8BTrNvNC7MTX502C8f2jmMQJ6mqF2fka1mqx6gqj0eN0B599M=\u0026uipk=5\u0026nbs=1\u0026deadline=1703393741\u0026gen=playurlv2\u0026os=mcdn\u0026oi=2053142854\u0026trid=000089390481a74741508d423cea0f437362u\u0026mid=692350792\u0026platform=pc\u0026upsig=96bcd7af14ebabd41aadd291c9d84013\u0026uparams=e,uipk,nbs,deadline,gen,os,oi,trid,mid,platform\u0026mcdnid=18000570\u0026bvc=vod\u0026nettype=0\u0026orderid=0,3\u0026buvid=AB32223F-EF64-9568-44D6-885367286F5670742infoc\u0026build=0\u0026f=u_0_0\u0026agrr=0\u0026bw=53204\u0026logo=A0020000",
+        "backup_url": [
+          "https://upos-sz-mirror08h.bilivideo.com/upgcxcode/08/11/1376711108/1376711108-1-16.mp4?e=ig8euxZM2rNcNbRVhwdVhwdlhWdVhwdVhoNvNC8BqJIzNbfqXBvEqxTEto8BTrNvN0GvT90W5JZMkX_YN0MvXg8gNEV4NC8xNEV4N03eN0B5tZlqNxTEto8BTrNvNeZVuJ10Kj_g2UB02J0mN0B5tZlqNCNEto8BTrNvNC7MTX502C8f2jmMQJ6mqF2fka1mqx6gqj0eN0B599M=\u0026uipk=5\u0026nbs=1\u0026deadline=1703393741\u0026gen=playurlv2\u0026os=08hbv\u0026oi=2053142854\u0026trid=89390481a74741508d423cea0f437362u\u0026mid=692350792\u0026platform=pc\u0026upsig=f6008bcfe1e72e5950c7fe8a1e0c86d7\u0026uparams=e,uipk,nbs,deadline,gen,os,oi,trid,mid,platform\u0026bvc=vod\u0026nettype=0\u0026orderid=1,3\u0026buvid=AB32223F-EF64-9568-44D6-885367286F5670742infoc\u0026build=0\u0026f=u_0_0\u0026agrr=0\u0026bw=53204\u0026logo=40000000",
+          "https://upos-sz-mirror08c.bilivideo.com/upgcxcode/08/11/1376711108/1376711108-1-16.mp4?e=ig8euxZM2rNcNbRVhwdVhwdlhWdVhwdVhoNvNC8BqJIzNbfqXBvEqxTEto8BTrNvN0GvT90W5JZMkX_YN0MvXg8gNEV4NC8xNEV4N03eN0B5tZlqNxTEto8BTrNvNeZVuJ10Kj_g2UB02J0mN0B5tZlqNCNEto8BTrNvNC7MTX502C8f2jmMQJ6mqF2fka1mqx6gqj0eN0B599M=\u0026uipk=5\u0026nbs=1\u0026deadline=1703393741\u0026gen=playurlv2\u0026os=08cbv\u0026oi=2053142854\u0026trid=89390481a74741508d423cea0f437362u\u0026mid=692350792\u0026platform=pc\u0026upsig=af9c4032c1527c92b9a568697464a58d\u0026uparams=e,uipk,nbs,deadline,gen,os,oi,trid,mid,platform\u0026bvc=vod\u0026nettype=0\u0026orderid=2,3\u0026buvid=AB32223F-EF64-9568-44D6-885367286F5670742infoc\u0026build=0\u0026f=u_0_0\u0026agrr=0\u0026bw=53204\u0026logo=40000000"
+        ]
+      }
+    ],
+    "support_formats": [
+      {
+        "quality": 64,
+        "format": "mp4720",
+        "new_description": "720P 高清",
+        "display_desc": "720P",
+        "superscript": "",
+        "codecs": null
+      },
+      {
+        "quality": 16,
+        "format": "mp4",
+        "new_description": "360P 流畅",
+        "display_desc": "360P",
+        "superscript": "",
+        "codecs": null
+      }
+    ],
+    "high_format": null,
+    "last_play_time": 1000,
+    "last_play_cid": 1376711108
+  }
+}
