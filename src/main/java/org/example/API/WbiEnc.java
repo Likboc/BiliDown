@@ -1,17 +1,12 @@
 package org.example.API;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import org.example.util.HttpRequestUtil;
-
-import java.io.BufferedReader;
+import org.example.util.MD5Dig;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -22,23 +17,37 @@ import java.util.regex.Pattern;
 
 public class WbiEnc {
     static int[] MixinArray = new int[]{46, 47, 18, 2, 53, 8, 23, 32, 15, 50, 10, 31, 58, 3, 45, 35, 27, 43, 5, 49, 33, 9, 42, 19, 29, 28, 14, 39, 12, 38, 41, 13, 37, 48, 7, 16, 24, 55, 40, 61, 26, 17, 0, 1, 60, 51, 30, 4, 22, 25, 54, 21, 56, 59, 6, 63, 57, 62, 11, 36, 20, 34, 44, 52};
-    public static String getWts(String url) {
+
+    /**
+     * concat wts param
+     * @param url
+     * @return
+     */
+    public static String setWts(String url) {
+        StringBuilder result = new StringBuilder(url);
         long ts = System.currentTimeMillis() / 1000L;
         String wts = String.format("wts=%d",ts);
-        return url.isEmpty()? "?" + wts : "&" + wts;
+        result.append(url.isEmpty()? "?" + wts : "&" + wts);
+        return result.toString();
     }
 
-    public static String getWrid(String url) throws UnsupportedEncodingException {
-        //1.1 get full uri
-        String url1 = getWts(url);
-        System.out.println("拼接后url为:"+ url1);
+    /**
+     * generate and concat w_rid param
+     * @param url
+     * @return w_rid = ""
+     * @throws UnsupportedEncodingException
+     */
+    public static String setWrid(String url) throws IOException {
+        //1.1
+        StringBuilder url_wrid = new StringBuilder();
 
         //1.2 get param string array
-        int urlEnd_idx = url1.lastIndexOf("/");
-        int paramIdx = url1.indexOf("?") + 1;
-        String paramStr = url1.substring(paramIdx);
+        int paramIdx = url.indexOf("?") + 1;
+        String paramStr = url.substring(paramIdx);
+        url_wrid.append(url.substring(0,paramIdx - 1));
         String[] params = paramStr.split("&");
-        // array -> arraylist
+
+        // array -> arraylist : convert to use sort()
         List<String> paramList = new ArrayList<>(Arrays.asList(params));
 
         //1.3 sort list
@@ -46,16 +55,24 @@ public class WbiEnc {
 
         //1.4 encoding key & value by iterate;
         //    get new String
-        String ans;
         for(String s : paramList) {
             String[] arr1 = s.split("=",2);
             arr1[0] = URLEncoder.encode(arr1[0],"UTF-8");
             arr1[1] = URLEncoder.encode(arr1[1],"UTF-8");
-            s = arr1[0] + "=" + arr1[1];
+            url_wrid.append(arr1[0]).append("=").append(arr1[1]);
         }
-        return String.join("&",paramList);
+        String mixinKeys = getMixinKeys();
+        String md5Input = String.join("&",paramList) + mixinKeys;
+        url_wrid.append("&").append("w_rid").append("=").append(MD5Dig.md5Enc(md5Input));
+        return url_wrid.toString();
     }
-    public String getKeys() throws IOException {
+
+    /**
+     * concat wbi img_url & sub_url
+     * @return keys
+     * @throws IOException
+     */
+    private static String getKeys() throws IOException {
         String key = HttpRequestUtil.getContentInString();
         Gson gson = new Gson();
         JsonObject jsonObject = JsonParser.parseString(key).getAsJsonObject();
@@ -70,12 +87,16 @@ public class WbiEnc {
         return null;
     }
 
-    public String getMixinKeys(String keys) {
-        StringBuilder builder = new StringBuilder();
+    /**
+     * obtain the keys form getKeys() func
+     * @return MixinKeys
+     */
+    private static String getMixinKeys() throws IOException {
+        String keys = getKeys();
+        StringBuilder MixinKeys = new StringBuilder();
         for(int i =0; i<keys.length();i++){
-            builder.append(keys.charAt(MixinArray[i]));
+            MixinKeys.append(keys.charAt(MixinArray[i]));
         }
-        return builder.toString();
+        return MixinKeys.substring(31);
     }
-
 }
